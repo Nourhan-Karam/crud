@@ -1,0 +1,60 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="w-75 m-auto bg-info p-4">
+            <h1 class="text-center">Crud systm</h1>
+            <div>
+                <label for="productNameInput">product Name : </label>
+                <input oninput="validitionName()" class="form-control" type="text" id="productNameInput">
+                <div id="massageName" class="alert alert-danger d-none">you shoud write caractar between 2 to 10</div>
+            </div>
+
+            <div>
+                <label for="productPriceInput">product Price : </label>
+                <input oninput="validitionPric()" class="form-control" type="number" id="productPriceInput">
+                <div id="massagePrice" class="alert alert-danger d-none">you shoud write number 2 to 8 numbers</div>
+            </div>
+
+            <div>
+                <label for="productCatageryInput">product Catagery : </label>
+                <input oninput="validitionCatagery()" class="form-control" type="text" id="productCatageryInput">
+                <div id="massageCatagery" class="alert alert-danger d-none">you shoud write caractar between 2 to 8</div>
+            </div>
+
+            <div>
+                <label for="productDescraptionInput">product Descraption : </label>
+             <textarea oninput="validitionDesc()" class="form-control"  id="productDescraptionInput"></textarea>
+             <div id="massageDesc" class="alert alert-danger d-none">you shoud write caractar between 4 to 100</div>
+            </div>
+            
+            <button id="addBTN" onclick="addProduct()" class="btn btn-primary w-100 my-3">Add Product</button>
+            <button onclick="updutItem()" id="updutBTN"  class="btn btn-primary w-100 my-3 d-none">Updut Product</button>
+
+
+            <input oninput="serchProduct()" id="serchInput" type="search" class="form-control w-50 m-auto my-3 " placeholder="seach about Name...">
+
+            <table class="table text-center ">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Catagery</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelBady">
+                   
+            </tbody>
+            </table>
+        </div>
+        <script src="main.js"></script>
+    </body>
+    </html>

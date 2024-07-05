@@ -1,18 +1,18 @@
-var productNameInput = document.getElementById("productNameInput");
-var productPriceInput = document.getElementById("productPriceInput");
-var productCatageryInput = document.getElementById("productCatageryInput");
-var productDescraptionInput = document.getElementById("productDescraptionInput");
-var deletInput = document.getElementById("deletInput");
-var serchInput = document.getElementById("serchInput");
-var updutBTN = document.getElementById("updutBTN");
-var addBTN = document.getElementById("addBTN");
-var indexUpdut = 0;
-var massageName = document.getElementById("massageName");
-var massagePrice = document.getElementById("massagePrice");
-var massageCatagery = document.getElementById("massageCatagery");
-var massageDesc = document.getElementById("massageDesc");
+let productNameInput = document.getElementById("productNameInput");
+let productPriceInput = document.getElementById("productPriceInput");
+let productCatageryInput = document.getElementById("productCatageryInput");
+let productDescraptionInput = document.getElementById("productDescraptionInput");
+let deletInput = document.getElementById("deletInput");
+let serchInput = document.getElementById("serchInput");
+let updutBTN = document.getElementById("updutBTN");
+let addBTN = document.getElementById("addBTN");
+let indexUpdut = 0;
+let massageName = document.getElementById("massageName");
+let massagePrice = document.getElementById("massagePrice");
+let massageCatagery = document.getElementById("massageCatagery");
+let massageDesc = document.getElementById("massageDesc");
 // console.log(productNameInput ,productPriceInput ,productCatageryInput ,productDescraptionInput)
-var listProduct = [];
+let listProduct = [];
 if (localStorage.getItem("products") != null) {
   listProduct = JSON.parse(localStorage.getItem("products"));
   displayProduct();
@@ -24,7 +24,7 @@ function addProduct() {
     validitionCatagery() == true &&
     validitionDesc() == true
   ) {
-    var product = {
+    let product = {
       name: productNameInput.value,
       price: productPriceInput.value,
       catagery: productCatageryInput.value,
@@ -53,8 +53,8 @@ function clearform() {
   productDescraptionInput.classList.remove("is-invalid");
 }
 function displayProduct() {
-  var cartona = "";
-  var term = serchInput.value;
+  let cartona = "";
+  let term = serchInput.value;
   //console.log(term)
   for (var i = 0; i < listProduct.length; i++) {
     if (listProduct[i].name.toLowerCase().includes(term.toLowerCase())) {
@@ -64,8 +64,8 @@ function displayProduct() {
      <td>${listProduct[i].price}</td>
      <td>${listProduct[i].catagery}</td>
      <td>${listProduct[i].desc}</td>
-     <td> <button onclick="setData(${i})" class="btn btn-warning ">Updut</button>
-     <button id="deletInput"onclick="deletItem(${i})" class="btn btn-danger ">Delet</button></td>
+     <td> <button onclick="setData(${i})" class="btn btn-warning mt-1 ">Updut</button>
+     <button id="deletInput"onclick="deletItem(${i})" class="btn btn-danger mt-1">Delet</button></td>
   </tr>`;
     }
   }
@@ -76,7 +76,7 @@ function deletItem(index) {
   localStorage.setItem("products", JSON.stringify(listProduct));
   displayProduct();
 }
-function serchProduct() {
+function serchProduct(term) {
   // console.log("hell")
   displayProduct();
 }
@@ -97,7 +97,7 @@ function updutItem() {
     validitionCatagery() == true &&
     validitionDesc() == true
   ) {
-    var product = {
+   let product = {
       name: productNameInput.value,
       price: productPriceInput.value,
       catagery: productCatageryInput.value,
@@ -113,8 +113,8 @@ function updutItem() {
 }
 //--------------------validation-------------
 function validitionName() {
-  var text = productNameInput.value;
-  var ragexName = /^[A-Za-z]{2,10}$/;
+ let text = productNameInput.value;
+ let ragexName = /^[A-Za-z ]{2,15}$/;
   //console.log(ragex.test(text))
   if (ragexName.test(text) == true) {
     //  console.log("yes")
@@ -132,8 +132,8 @@ function validitionName() {
   }
 }
 function validitionPric() {
-  var text = productPriceInput.value;
-  var ragexPrice = /^[0-9]{2,8}$/;
+ let text = productPriceInput.value;
+ let ragexPrice = /^[0-9]{2,8}$/;
   //console.log(ragex.test(text))
   if (ragexPrice.test(text) == true) {
     // console.log("yes")
@@ -151,7 +151,7 @@ function validitionPric() {
 }
 function validitionCatagery() {
   var text = productCatageryInput.value;
-  var ragexCatagery = /^[A-Za-z]{2,8}$/;
+  var ragexCatagery = /^[A-Za-z ]{2,8}$/;
   //console.log(ragex.test(text))
   if (ragexCatagery.test(text) == true) {
     // console.log("yes")
@@ -170,7 +170,7 @@ function validitionCatagery() {
 }
 function validitionDesc() {
   var text = productDescraptionInput.value;
-  var ragexDesc = /^[A-Za-z]{4,100}$/;
+  var ragexDesc = /^[A-Za-z ]{4,100}$/;
   //console.log(ragex.test(text))
   if (ragexDesc.test(text) == true) {
     // console.log("yes")
